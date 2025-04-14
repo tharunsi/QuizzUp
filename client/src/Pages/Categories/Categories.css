@@ -1,0 +1,120 @@
+.categories-container {
+    background: linear-gradient(to right, #f8f8f8, #e0f7fa);
+    padding: 60px 30px;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .categories-title {
+    text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 60px;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    position: relative;
+  
+    overflow: visible;
+  }
+  
+  .category-card-wrapper {
+    position: relative;
+   
+  }
+  .category-card-wrapper .active-card {
+    
+    z-index: 10;
+  }
+  
+  .category-card-inner {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.4s ease;
+    cursor: pointer;
+  }
+  
+  .category-card-wrapper:hover .category-card-inner {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  }
+  
+  .category-header-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .category-icon-box {
+    font-size: 36px;
+    margin-right: 12px;
+  }
+  
+  .category-name-box {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    flex-grow: 1;
+  }
+  
+  .category-arrow-box {
+    font-size: 18px;
+    color: #777;
+    transition: transform 0.3s;
+  }
+  
+  .category-card-wrapper.active-card .category-arrow-box {
+    transform: rotate(180deg);
+  }
+  
+ 
+  .subcategory-box-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #f9ffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 999;
+    pointer-events: none;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+  
+  .subcategory-box-open {
+    opacity: 1;
+    max-height: 300px;
+    padding: 15px;
+    pointer-events: auto;
+  }
+  
+  .subcategory-box-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .subcategory-box-item {
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background-color: #e4f8fb;
+    border-left: 5px solid #00bcd4;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .subcategory-box-item:hover {
+    background-color: #d1eef5;
+  }
+  
