@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@agney/react-loading": "^0.1.2",
+    "axios": "^1.12.2",
     "dotenv": "^16.5.0",
     "formik": "^2.4.6",
     "react": "^19.0.0",

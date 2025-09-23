@@ -1,0 +1,90 @@
+/* PostQuiz.css */
+
+.post-quiz-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #1e1e2f;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.post-quiz-container h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffd700;
+}
+
+.post-quiz-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.post-quiz-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.post-quiz-container input[type="text"],
+.post-quiz-container input[type="number"] {
+  width: 90%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.post-quiz-container input[type="text"]:focus,
+.post-quiz-container input[type="number"]:focus {
+  box-shadow: 0 0 5px #ffd700;
+}
+
+.post-quiz-container button {
+  padding: 12px 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.post-quiz-container button[type="submit"] {
+  background-color: #ffd700;
+  color: #1e1e2f;
+}
+
+.post-quiz-container button[type="submit"]:hover {
+  background-color: #e6c200;
+}
+
+.post-quiz-container button[type="button"] {
+  background-color: #44475a;
+  color: #ffffff;
+}
+
+.post-quiz-container button[type="button"]:hover {
+  background-color: #626480;
+}
+
+.post-quiz-container .question-block {
+  padding: 15px;
+  border: 1px solid #44475a;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: #2e2e3e;
+}
+
+.post-quiz-container .error-message {
+  color: #ff4c4c;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}

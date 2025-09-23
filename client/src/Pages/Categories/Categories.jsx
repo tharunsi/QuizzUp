@@ -1,47 +1,48 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Categories.css";
 
-const categories = [
+const categoriesData = [
   {
-    title: "Programming",
     icon: "💻",
-    topics: ["C", "C++", "Java", "Python", "JavaScript"],
+    title: "Programming",
+    topics: ["C", "C++", "Java", "Python", "JavaScript"]
   },
   {
-    title: "Aptitude",
     icon: "🧠",
-    topics: ["Quantitative", "Problem Solving", "Speed Math"],
+    title: "Aptitude",
+    topics: ["Quantitative", "Problem Solving", "Speed Math"]
   },
   {
-    title: "General Knowledge",
     icon: "🌍",
-    topics: ["India", "World", "Current Affairs", "History"],
+    title: "General Knowledge",
+    topics: ["India", "World", "Current Affairs", "History"]
   },
   {
-    title: "Logical Reasoning",
     icon: "🧩",
-    topics: ["Puzzles", "Series", "Blood Relations", "Coding-Decoding"],
+    title: "Logical Reasoning",
+    topics: ["Puzzles", "Series", "Blood Relations", "Coding-Decoding"]
   },
   {
-    title: "Physics",
     icon: "🔭",
-    topics: ["Mechanics", "Waves", "Thermodynamics"],
+    title: "Physics",
+    topics: ["Mechanics", "Waves", "Thermodynamics"]
   },
   {
-    title: "Chemistry",
     icon: "⚗️",
-    topics: ["Organic", "Inorganic", "Physical"],
+    title: "Chemistry",
+    topics: ["Organic", "Inorganic", "Physical"]
   },
   {
-    title: "Computer Networks",
     icon: "🌐",
-    topics: ["TCP/IP", "OSI Model", "Routing", "Protocols"],
+    title: "Computer Networks",
+    topics: ["TCP-IP", "OSI Model", "Routing", "Protocols"]
   },
   {
-    title: "Verbal Ability",
     icon: "🗣️",
-    topics: ["Synonyms", "Antonyms", "Reading Comprehension"],
-  },
+    title: "Verbal Ability",
+    topics: ["Synonyms", "Antonyms", "Reading Comprehension"]
+  }
 ];
 
 const Categories = () => {
@@ -55,29 +56,26 @@ const Categories = () => {
     <div className="categories-container">
       <h1 className="categories-title">Explore Quiz Categories</h1>
       <div className="categories-grid">
-        {categories.map((cat, idx) => (
+        {categoriesData.map((cat, index) => (
           <div
-            key={idx}
-            className={`category-card-wrapper ${expanded === idx ? "active-card" : ""}`}
-            onClick={() => toggleDropdown(idx)}
+            key={index}
+            className={`category-card-wrapper ${expanded === index ? "active-card" : ""}`}
+            onClick={() => toggleDropdown(index)}
           >
             <div className="category-card-inner">
               <div className="category-header-box">
                 <div className="category-icon-box">{cat.icon}</div>
                 <div className="category-name-box">{cat.title}</div>
-                <div className="category-arrow-box">{expanded === idx ? "▲" : "▼"}</div>
+                <div className="category-arrow-box">{expanded === index ? "▲" : "▼"}</div>
               </div>
             </div>
-
-            <div
-              className={`subcategory-box-wrapper ${
-                expanded === idx ? "subcategory-box-open" : ""
-              }`}
-            >
+            <div className={`subcategory-box-wrapper ${expanded === index ? "subcategory-box-open" : ""}`}>
               <ul className="subcategory-box-list">
                 {cat.topics.map((topic, i) => (
                   <li key={i} className="subcategory-box-item">
-                    {topic}
+                    <Link to={`/quiz/${cat.title}/${topic}`} style={{ textDecoration: "none", color: "#333" }}>
+                      {topic}
+                    </Link>
                   </li>
                 ))}
               </ul>

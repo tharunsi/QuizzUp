@@ -112,9 +112,14 @@
     border-radius: 6px;
     font-size: 16px;
     transition: background-color 0.3s;
+    
   }
   
   .subcategory-box-item:hover {
     background-color: #d1eef5;
   }
-  
+  .subcategory-box-item a {
+    text-decoration: none;  /* removes underline */
+    color: #333;            /* sets a dark readable color */
+    display: block;         /* makes the whole area clickable */
+  }

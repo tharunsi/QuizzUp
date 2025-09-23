@@ -10,6 +10,9 @@ import Login from './Pages/Login/Login'
 import Result from './Pages/Result/Result'
 import Profile from './Pages/Profile/Profile'
 import Categories from './Pages/Categories/Categories'
+import StartQuiz from './Pages/Startquiz/StartQuiz'
+import PostQuiz from './Pages/Admin/PostQuiz'
+import QuizPage from './Pages/QuizPage/QuizPage'
 
 
 function App() {
@@ -28,8 +31,9 @@ function App() {
      <Route path="/leaderboard" element={<Leaderboard />} /> 
      <Route path="/result" element={<Result />} /> 
      <Route path="/profile" element={<Profile />} /> 
-     
-
+     <Route path="/quiz/:category/:topic" element={<StartQuiz />} />
+     <Route path="/add-quiz" element={<PostQuiz />} /> 
+     <Route path="/quiz/:category/:topic/:id" element={<QuizPage />} />
     
     </Routes>
 
