@@ -11,6 +11,7 @@ const quizSchema = new mongoose.Schema({
       answer: Number,
     },
   ],
+  createdAt: { type: Date, default: Date.now },
 });
 
 const Quiz = mongoose.model("Quiz", quizSchema);

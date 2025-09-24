@@ -119,7 +119,7 @@
     background-color: #d1eef5;
   }
   .subcategory-box-item a {
-    text-decoration: none;  /* removes underline */
-    color: #333;            /* sets a dark readable color */
-    display: block;         /* makes the whole area clickable */
+    text-decoration: none;  
+    color: #333;      
+    display: block;        
   }

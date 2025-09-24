@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import Quiz from "../Quiz/Quiz";
-import { fetchQuiz } from "../../api/quizApi"; 
-import axios from "axios";
+import { fetchQuiz } from "../../api/quizApi";
+import "./StartQuiz.css";
 
 const StartQuiz = () => {
   const { category, topic } = useParams();
   const [quizzes, setQuizzes] = useState([]);
-
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const loadQuiz = async () => {
@@ -24,25 +23,39 @@ const StartQuiz = () => {
     loadQuiz();
   }, [category, topic]);
 
-  if (loading) return <div>Loading quiz...</div>;
+  const filteredQuizzes = quizzes.filter(q =>
+    q.heading.toLowerCase().includes(search.toLowerCase())
+  );
+
+  if (loading) return <div className="loading">Loading quizzes...</div>;
 
   return (
-    <div>
-    <h2>{category} - {topic}</h2>
-    {quizzes.length > 0 ? (
-     <ul>
-        {quizzes.map((quiz) => (
-          <li key={quiz._id}>
-            <Link to={`/quiz/${category}/${topic}/${quiz._id}`}>
-              {quiz.heading}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p>No quizzes found!</p>
-    )}
-  </div>
+    <div className="startquiz-container">
+      <h2 className="startquiz-title">{category} - {topic}</h2>
+
+      <div className="quiz-search">
+        <input
+          type="text"
+          placeholder="Search quizzes..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      {filteredQuizzes.length > 0 ? (
+        <ul className="quiz-list">
+          {filteredQuizzes.map((quiz) => (
+            <li key={quiz._id} className="quiz-item">
+              <Link to={`/quiz/${category}/${topic}/${quiz._id}`} className="quiz-link">
+                {quiz.heading}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="no-quizzes">No quizzes found!</p>
+      )}
+    </div>
   );
 };
 
