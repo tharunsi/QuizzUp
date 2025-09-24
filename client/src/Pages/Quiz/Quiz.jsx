@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Quiz.css";
 
 const Quiz = ({ questions }) => {
   const [current, setCurrent] = useState(0);
@@ -14,7 +15,6 @@ const Quiz = ({ questions }) => {
     if (selected === questions[current].answer) {
       setScore(score + 1);
     }
-
     setSelected(null);
     if (current < questions.length - 1) {
       setCurrent(current + 1);
@@ -25,7 +25,7 @@ const Quiz = ({ questions }) => {
 
   if (showScore) {
     return (
-      <div>
+      <div className="quiz-score">
         <h2>Your Score: {score}/{questions.length}</h2>
       </div>
     );
@@ -34,25 +34,18 @@ const Quiz = ({ questions }) => {
   return (
     <div className="quiz-container">
       <h3>Q{current + 1}. {questions[current].question}</h3>
-      <ul>
+      <ul className="quiz-options">
         {questions[current].options.map((opt, i) => (
           <li
             key={i}
+            className={selected === i ? "selected" : ""}
             onClick={() => handleOptionClick(i)}
-            style={{
-              backgroundColor: selected === i ? "#ccefff" : "#f9f9f9",
-              cursor: "pointer",
-              padding: "10px",
-              border: "1px solid #ddd",
-              borderRadius: "5px",
-              margin: "8px 0"
-            }}
           >
             {opt}
           </li>
         ))}
       </ul>
-      <button onClick={handleNext} style={{ marginTop: "10px" }}>
+      <button onClick={handleNext} className="quiz-btn">
         {current === questions.length - 1 ? "Finish" : "Next"}
       </button>
     </div>
