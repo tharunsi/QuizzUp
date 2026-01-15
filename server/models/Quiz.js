@@ -4,6 +4,12 @@ const quizSchema = new mongoose.Schema({
   category: String,
   topic: String,
   heading: String,
+  timePerQuestion: {
+    type: Number, 
+    required: true,
+    default: 30
+  },
+
   questions: [
     {
       question: String,

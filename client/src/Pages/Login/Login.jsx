@@ -15,7 +15,7 @@ const Login = () => {
       const res = await axios.post("/api/auth/login", { email, password });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-      navigate("/dashboard"); // redirect after login
+      navigate("/quiz-categories"); // redirect after login
     } catch (err) {
       setError(err.response?.data?.error || "Login failed");
     }

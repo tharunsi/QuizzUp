@@ -23,6 +23,9 @@ const Signup = () => {
      // teacherKey, // if teacher
     });
     console.log("Signup success", res.data);
+
+    alert("Account created successfully!");
+    navigate("/quiz-categories");
   }
     catch (err) {
       setError(err.response?.data?.error || "Signup failed");

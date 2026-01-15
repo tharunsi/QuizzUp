@@ -10,6 +10,8 @@ const PostQuiz = () => {
     { question: "", options: ["", "", "", ""], answer: 0 },
   ]);
   const [error, setError] = useState(null);
+  const [timePerQuestion, setTimePerQuestion] = useState(30);
+
 
   // Handle changes in question fields
   const handleQuestionChange = (index, field, value) => {
@@ -34,6 +36,7 @@ const PostQuiz = () => {
       category,
       topic,
       heading,
+      timePerQuestion,
       questions,
     };
 
@@ -70,6 +73,18 @@ const PostQuiz = () => {
       <label>Heading:</label>
       <input type="text" value={heading} onChange={(e) => setHeading(e.target.value)} required />
     </div>
+
+    <div>
+  <label>Time per Question (seconds):</label>
+  <input
+    type="number"
+    min="5"
+    value={timePerQuestion}
+    onChange={(e) => setTimePerQuestion(Number(e.target.value))}
+    required
+  />
+</div>
+
 
     {questions.map((question, index) => (
       <div key={index} className="question-block">

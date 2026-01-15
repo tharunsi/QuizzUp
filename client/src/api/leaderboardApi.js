@@ -8,10 +8,10 @@ const API = axios.create({
 export const fetchLeaderboard = (quizId) => API.get(`/${quizId}`);
 
 // Optional: post/update score for a quiz (requires JWT)
-export const postScore = (quizId, score, token) =>
+export const postScore = (quizId, score, timeTaken, token) =>
   API.post(
-    `/${quizId}`,
-    { score },
+    `/`, // no quizId in URL
+    { quizId, score, timeTaken },
     {
       headers: { Authorization: `Bearer ${token}` },
     }
