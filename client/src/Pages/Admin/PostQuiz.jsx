@@ -11,6 +11,9 @@ const PostQuiz = () => {
   ]);
   const [error, setError] = useState(null);
   const [timePerQuestion, setTimePerQuestion] = useState(30);
+  const [proctoringEnabled, setProctoringEnabled] = useState(false);
+  const [shuffleQuestions, setShuffleQuestions] = useState(false);
+  const [shuffleOptions, setShuffleOptions] = useState(false);
 
 
   // Handle changes in question fields
@@ -38,6 +41,9 @@ const PostQuiz = () => {
       heading,
       timePerQuestion,
       questions,
+      proctoringEnabled,
+  shuffleQuestions,
+  shuffleOptions,
     };
 
     try {
@@ -84,6 +90,39 @@ const PostQuiz = () => {
     required
   />
 </div>
+
+
+<div className="settings-section">
+  <h3>Quiz Settings</h3>
+
+  <label className="toggle">
+    <input
+      type="checkbox"
+      checked={proctoringEnabled}
+      onChange={(e) => setProctoringEnabled(e.target.checked)}
+    />
+    <span>Enable Proctoring</span>
+  </label>
+
+  <label className="toggle">
+    <input
+      type="checkbox"
+      checked={shuffleQuestions}
+      onChange={(e) => setShuffleQuestions(e.target.checked)}
+    />
+    <span>Shuffle Questions</span>
+  </label>
+
+  <label className="toggle">
+    <input
+      type="checkbox"
+      checked={shuffleOptions}
+      onChange={(e) => setShuffleOptions(e.target.checked)}
+    />
+    <span>Shuffle Options</span>
+  </label>
+</div>
+
 
 
     {questions.map((question, index) => (

@@ -17,6 +17,19 @@ const quizSchema = new mongoose.Schema({
       answer: Number,
     },
   ],
+   proctoringEnabled: {
+    type: Boolean,
+    default: false,
+  },
+  shuffleQuestions: {
+    type: Boolean,
+    default: false,
+  },
+
+  shuffleOptions: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: { type: Date, default: Date.now },
 });
 

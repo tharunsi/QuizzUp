@@ -153,7 +153,7 @@ useEffect(() => {
       )}
 
       <div className="quizpage-container">
-        <Quiz questions={quiz.questions} timeUp={timeLeft <= 0} />
+        <Quiz questions={quiz.questions} timeUp={timeLeft <= 0}  onSubmit={() => setTestFinished(true)} />
       </div>
     </div>
   );
