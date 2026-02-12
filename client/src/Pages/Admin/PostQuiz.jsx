@@ -2,6 +2,43 @@ import React, { useState } from "react";
 import axios from "axios";
 import './PostQuiz.css';
 
+const categoriesData = [
+  {
+    title: "Programming",
+    topics: ["C", "C++", "Java", "Python", "JavaScript"]
+  },
+  {
+    title: "Aptitude",
+    topics: ["Quantitative", "Problem Solving", "Speed Math"]
+  },
+  {
+    title: "General Knowledge",
+    topics: ["India", "World", "Current Affairs", "History"]
+  },
+  {
+    title: "Logical Reasoning",
+    topics: ["Puzzles", "Series", "Blood Relations", "Coding-Decoding"]
+  },
+  {
+    title: "Physics",
+    topics: ["Mechanics", "Waves", "Thermodynamics"]
+  },
+  {
+    title: "Chemistry",
+    topics: ["Organic", "Inorganic", "Physical"]
+  },
+  {
+    title: "Computer Networks",
+    topics: ["TCP-IP", "OSI Model", "Routing", "Protocols"]
+  },
+  {
+    title: "Verbal Ability",
+    topics: ["Synonyms", "Antonyms", "Reading Comprehension"]
+  }
+];
+
+
+
 const PostQuiz = () => {
   const [category, setCategory] = useState("");
   const [topic, setTopic] = useState("");
@@ -14,7 +51,10 @@ const PostQuiz = () => {
   const [proctoringEnabled, setProctoringEnabled] = useState(false);
   const [shuffleQuestions, setShuffleQuestions] = useState(false);
   const [shuffleOptions, setShuffleOptions] = useState(false);
-
+   
+    const selectedCategory = categoriesData.find(
+    (cat) => cat.title === category
+  );
 
   // Handle changes in question fields
   const handleQuestionChange = (index, field, value) => {
@@ -69,11 +109,38 @@ const PostQuiz = () => {
   <form onSubmit={handleSubmit}>
     <div>
       <label>Category:</label>
-      <input type="text" value={category} onChange={(e) => setCategory(e.target.value)} required />
+                <select
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
+              setTopic(""); // reset topic when category changes
+            }}
+            required
+          >
+            <option value="">Select Category</option>
+            {categoriesData.map((cat) => (
+              <option key={cat.title} value={cat.title}>
+                {cat.title}
+              </option>
+            ))}
+          </select>
+
     </div>
     <div>
       <label>Topic:</label>
-      <input type="text" value={topic} onChange={(e) => setTopic(e.target.value)} required />
+      <select
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            required
+            disabled={!category}
+          >
+            <option value="">Select Topic</option>
+            {selectedCategory?.topics.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
     </div>
     <div>
       <label>Heading:</label>
@@ -144,9 +211,23 @@ const PostQuiz = () => {
         ))}
 
         <div>
-          <label>Correct Answer (0-3):</label>
-          <input type="number" value={question.answer} onChange={(e) => handleQuestionChange(index, "answer", parseInt(e.target.value))} min="0" max="3" required />
-        </div>
+  <label>Correct Answer</label>
+  <select
+    value={question.answer + 1} // we store 0-based index but show 1-4 to user
+    onChange={(e) =>
+      handleQuestionChange(index, "answer", parseInt(e.target.value) - 1)
+    }
+    required
+  >
+    <option value="">Select Correct Option</option>
+    {question.options.map((opt, j) => (
+      <option key={j} value={j + 1}>
+        Option {j + 1}
+      </option>
+    ))}
+  </select>
+</div>
+
       </div>
     ))}
 

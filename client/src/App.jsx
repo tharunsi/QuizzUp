@@ -13,6 +13,7 @@ import Categories from './Pages/Categories/Categories'
 import StartQuiz from './Pages/Startquiz/StartQuiz'
 import PostQuiz from './Pages/Admin/PostQuiz'
 import QuizPage from './Pages/QuizPage/QuizPage'
+import GroupsPage from './Pages/GroupPage/GroupsPage'
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
      <Route path="/quiz/:category/:topic" element={<StartQuiz />} />
      <Route path="/add-quiz" element={<PostQuiz />} /> 
      <Route path="/quiz/:category/:topic/:id" element={<QuizPage />} />
+     <Route path="/groups" element={<GroupsPage />} />
     
     </Routes>
 
